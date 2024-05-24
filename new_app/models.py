@@ -3,6 +3,7 @@ from django.db import models
 NULLABLE = {'null': True, 'blank': True}
 
 class Student(models.Model):
+
     first_name = models.CharField(max_length=100, verbose_name='Имя')
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     avatar = models.ImageField(upload_to='students/', verbose_name='аватар', **NULLABLE) # 2 Вариант

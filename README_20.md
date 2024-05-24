@@ -47,6 +47,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 from django.conf import settings
 from django.conf.urls.static import static
 
+Примеры Как и какие настройки влияют на поведение модели:
+
+null — позволяет хранить пустое значение в БД.
+max_length — указывает максимальное количество символов для хранения в БД.
+default — указывает значение по умолчанию для поля, не требуя от пользователя заполнять это поле чем-либо.
+on_delete — описывает поведение, если связанный родительский объект был удален.
+
 # 3) Админка
 
 Создаем Админа командой:
@@ -99,7 +106,18 @@ python manage.py dumpdata new_app > data.json
 сохраняет данные в json файл
 (для форматирования json-файла Ctrl+Alt+L)
 
+# 5) Команды
+Все команды должны храниться в пакете управления management -> в пакете commands -> файл_с_командами.py
 
+файл_с_команадами 
+должен содержать класс, унаследованный от BaseCommand, с методами исполнения команды.
+from django.core.management import BaseCommand
 
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        print('Hi, Sky!')
+
+команды вызывается:
+python manage.py <файл_с_командами>
 
 
