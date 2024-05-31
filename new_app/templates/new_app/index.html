@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Hello!</h1>
-<br>
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="name" /><br>
-    <input type="email" name="email" /><br>
-    <textarea name="message"></textarea><br>
-    <input type="submit" value="Отправить"/>
-</form>
-</body>
-</html>
+{% extends 'new_app/base.html' %}
+{% block content %}
+    {% for object in object_list %}
+    <div class="col">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <p class="card-text">
+                    {% if object.is_active %}
+                    {{ object|title }}
+                    {% else %}
+                    <span class="text-muted">{{ object|title }}</span>
+                    {% endif %}
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-body-secondary"></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
