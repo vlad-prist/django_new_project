@@ -1,0 +1,22 @@
+{% extends 'new_app/base.html'%}
+{% block content %}
+<div class="col-12 mb-5">
+    <div class="row">
+        <div class="col-6">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">Материал:
+                        {{ object.title }}
+                    </p>
+                    <p class="card-text">Содержание:
+                        {{ object.body }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12 mb-5">
+        <a class="btn btn-outline-secondary" href="{% url 'materials:list' %}" role="button">Назад</a>
+</div>
+{% endblock %}
