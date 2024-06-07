@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from new_app.models import Student
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 
 class StudentListView(ListView):
@@ -29,6 +29,19 @@ class StudentUpdateView(UpdateView):
 class StudentDeleteView(DeleteView):
     model = Student
     success_url = reverse_lazy("new_app:index")
+
+
+def toggle_activity(request, pk):
+    student_item = get_object_or_404(Student, pk=pk)
+    if student_item.is_active:
+        student_item.is_active = False
+    else:
+        student_item.is_active = True
+
+    student_item.save()
+
+    return redirect(reverse("new_app:index"))
+
 
 
 # def view_student(request, pk):
