@@ -1,16 +1,34 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from new_app.models import Student
+from django.urls import reverse_lazy
 
 
 class StudentListView(ListView):
     model = Student
-    template_name = 'new_app/index.html'
+    # template_name = 'new_app/index.html'
 
 
 class StudentDetailView(DetailView):
     model = Student
-    template_name = 'new_app/student_detail.html'
+    # template_name = 'new_app/student_detail.html'
+
+
+class StudentCreateView(CreateView):
+    model = Student
+    fields = ('first_name', 'last_name', 'avatar')
+    success_url = reverse_lazy("new_app:index")
+
+
+class StudentUpdateView(UpdateView):
+    model = Student
+    fields = ('first_name', 'last_name', 'avatar')
+    success_url = reverse_lazy("new_app:index")
+
+
+class StudentDeleteView(DeleteView):
+    model = Student
+    success_url = reverse_lazy("new_app:index")
 
 
 # def view_student(request, pk):
@@ -27,6 +45,7 @@ class StudentDetailView(DetailView):
 #         'title': 'Student List',
 #     }
 #     return render(request, 'new_app/index.html', context)
+
 
 
 def contact(request):
