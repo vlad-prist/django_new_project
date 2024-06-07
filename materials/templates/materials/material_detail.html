@@ -6,11 +6,14 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <p class="card-text">Материал:
-                        {{ object.title }}
+                        {{ object.title }} ({{ object.slug }})
                     </p>
                     <p class="card-text">Содержание:
                         {{ object.body }}
                     </p>
+                </div>
+                <div class="card-footer">
+                    Просмотры {{ object.views_count }}
                 </div>
             </div>
         </div>
