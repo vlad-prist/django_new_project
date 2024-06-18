@@ -22,3 +22,16 @@ class Student(models.Model):
         verbose_name_plural = 'Студенты'
         ordering = ('last_name',)
         # Информация для вывода удобного отображения текстов нашей модели
+
+
+class Subject(models.Model):
+    title = models.CharField(max_length=150, verbose_name='название')
+    description = models.TextField(verbose_name='описание')
+    students = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name='студенты')
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Предмет'
+        verbose_name_plural = 'Предметы'
