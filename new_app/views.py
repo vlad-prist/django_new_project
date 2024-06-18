@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+from new_app.forms import StudentForm
 from new_app.models import Student
 from django.urls import reverse_lazy, reverse
 
@@ -16,13 +18,15 @@ class StudentDetailView(DetailView):
 
 class StudentCreateView(CreateView):
     model = Student
-    fields = ('first_name', 'last_name', 'avatar')
+    form_class = StudentForm
+    #fields = ('first_name', 'last_name', 'avatar')
     success_url = reverse_lazy("new_app:index")
 
 
 class StudentUpdateView(UpdateView):
     model = Student
-    fields = ('first_name', 'last_name', 'avatar')
+    form_class = StudentForm
+    #fields = ('first_name', 'last_name', 'avatar')
     success_url = reverse_lazy("new_app:index")
 
 

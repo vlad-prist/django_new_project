@@ -1,14 +1,17 @@
 {% extends 'new_app/base.html' %}
 {% block content %}
-<div class="col-12">
+<div class="col mb-5">
     <div class="row">
         <div class="col-6">
             <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Добавление студента</h5>
+                </div>
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Создать</button>
+                        <button type="submit" class="btn btn-success">Создать</button>
                     </form>
                 </div>
             </div>
