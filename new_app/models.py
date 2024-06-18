@@ -11,6 +11,8 @@ class Student(models.Model):
     # null=True значит что мы можем хранить в базе null объекты (пустыне)
     # blank=True значит что мы можем хранить в базе пустые строки
 
+    email = models.CharField(max_length=150, verbose_name='email', unique=True, **NULLABLE)
+
     is_active = models.BooleanField(default=True, verbose_name='Учится')
 
     def __str__(self):
